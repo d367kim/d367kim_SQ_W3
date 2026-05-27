@@ -10,6 +10,12 @@
 // STATE_FIGHT, JavaScript will throw an error instead of
 // silently using the wrong string.
 // ------------------------------------------------------------
+let startBg;
+let fightBg;
+let winBg;
+
+let shakeAmount = 0;
+
 const STATE_START = "start";
 const STATE_FIGHT = "fight";
 const STATE_WIN   = "win";
@@ -23,6 +29,9 @@ let winner = null; // stores "P1" or "P2" when the game ends
 // punchSounds is an array — a random one plays on each hit
 // so punches don't sound identical every time.
 // ------------------------------------------------------------
+
+let startMusic;
+let endSound;
 let punchSounds = [];
 let winSound;
 let bgMusic;
@@ -182,6 +191,8 @@ class Fighter {
 
     this.health--;
     this.hitFlash = 12; // flash white for 12 frames
+    
+    shakeAmount = 8; // trigger screen shake
 
     // If health reaches zero, end the game
     if (this.health <= 0) {
@@ -254,15 +265,36 @@ let groundY;
 // Runs once before setup(). Loads all sounds so they are
 // ready before the game starts.
 // ============================================================
+
 function preload() {
-  // Load all 9 punch sounds into an array
-  // A random one will be picked each time a punch lands
+  // --------------------------------------------------
+  // PUNCH SOUNDS (already in your code)
+  // --------------------------------------------------
   for (let i = 1; i <= 9; i++) {
     punchSounds.push(loadSound("assets/sounds/punch_" + i + ".wav"));
   }
+
+  // --------------------------------------------------
+  // EXISTING SOUNDS
+  // --------------------------------------------------
   winSound = loadSound("assets/sounds/win.wav");
   bgMusic  = loadSound("assets/sounds/background.mp3");
+
+  // --------------------------------------------------
+  // ✅ NEW SOUNDS (YOU ADDED)
+  // --------------------------------------------------
+  startMusic = loadSound("assets/sounds/startmusic.mp3");
+  endSound   = loadSound("assets/sounds/yoink.mp3");
+
+  // --------------------------------------------------
+  // BACKGROUND IMAGES (already done ✅)
+  // --------------------------------------------------
+  startBg = loadImage("assets/images/starting.png");
+  fightBg = loadImage("assets/images/fighting.png");
+  winBg   = loadImage("assets/images/ending.png");
 }
+``
+
 
 // ============================================================
 // setup()
@@ -308,7 +340,19 @@ function setupFighters() {
 // Runs repeatedly in a loop after setup() finishes.
 // Switches what gets drawn based on the current game state.
 // ============================================================
+
+
 function draw() {
+  push();  // ✅ start transformation
+
+  // ----------------------------------------
+  // SCREEN SHAKE
+  // ----------------------------------------
+  if (shakeAmount > 0) {
+    translate(random(-shakeAmount, shakeAmount), random(-shakeAmount, shakeAmount));
+    shakeAmount *= 0.8; // smoothly reduces shake
+  }
+
   background(10);
 
   if (gameState === STATE_START) {
@@ -320,12 +364,13 @@ function draw() {
     drawHealthBars();
     drawFightHUD();
   } else if (gameState === STATE_WIN) {
-    drawArena();
-    fighter1.draw();
-    fighter2.draw();
     drawWinScreen();
   }
+
+  pop();  // ✅ end transformation
 }
+
+
 
 // ============================================================
 // GAME STATE FUNCTIONS
@@ -336,26 +381,36 @@ function draw() {
 // Transitions to the FIGHT state, resets fighters,
 // and starts background music.
 // ------------------------------------------------------------
+
+
 function startGame() {
   gameState = STATE_FIGHT;
   winner = null;
   setupFighters();
+
+  startMusic.stop();  // ✅ REQUIRED
+
   if (!bgMusic.isPlaying()) {
     bgMusic.loop();
   }
 }
+
+
 
 // ------------------------------------------------------------
 // endGame()
 // Transitions to the WIN state, stores the winner's label,
 // stops music, and plays the win sound.
 // ------------------------------------------------------------
+
 function endGame(winnerLabel) {
   gameState = STATE_WIN;
   winner = winnerLabel;
+
   bgMusic.stop();
-  winSound.play();
+  endSound.play();   // ✅ your "yoink"
 }
+
 
 // ============================================================
 // DRAW FUNCTIONS
@@ -366,29 +421,57 @@ function endGame(winnerLabel) {
 // Displayed before the game begins.
 // ------------------------------------------------------------
 function drawStartScreen() {
-  // Title
-  fill(255);
-  textAlign(CENTER);
-  textSize(52);
-  text("BLOB BRAWL", width / 2, height / 2 - 60);
+  // --------------------------------------------------
+  // BACKGROUND
+  // --------------------------------------------------
+  image(startBg, 0, 0, width, height);
 
-  // Subtitle
-  fill(160);
-  textSize(18);
-  text("First to land 3 hits wins", width / 2, height / 2 - 20);
+  // dark overlay so text is readable
+  fill(0, 0, 0, 130);
+  rect(0, 0, width, height);
 
-  // Controls — each player shown in their colour
+  // --------------------------------------------------
+  // ✅ START MUSIC (plays only on start screen)
+  // --------------------------------------------------
+  if (!startMusic.isPlaying()) {
+    startMusic.loop();
+  }
+
+  // --------------------------------------------------
+  
+// TITLE
+textAlign(CENTER);
+textSize(52);
+
+// "PORTAL ARENA"
+fill(100, 200, 255); // blue glow color
+text("PORTAL ARENA", width / 2, height / 2 - 70);
+
+// "1v1"
+fill(255, 150, 0); // orange accent
+textSize(32);
+text("1 vs 1", width / 2, height / 2 - 35);
+
+
+  // --------------------------------------------------
+  // CONTROLS
+  // --------------------------------------------------
   textSize(14);
+
   fill(0, 200, 180);
   text("P1: A/D move   F attack   G block", width / 2, height / 2 + 30);
+
   fill(255, 150, 30);
   text("P2: Arrows move   K attack   L block", width / 2, height / 2 + 55);
 
-  // Start prompt
+  // --------------------------------------------------
+  // START PROMPT
+  // --------------------------------------------------
   fill(255);
   textSize(16);
   text("Press ENTER to start", width / 2, height / 2 + 110);
 }
+
 
 // ------------------------------------------------------------
 // drawWinScreen()
@@ -397,14 +480,31 @@ function drawStartScreen() {
 // ------------------------------------------------------------
 function drawWinScreen() {
   // Semi-transparent overlay
+  image(winBg, 0, 0, width, height);
   fill(0, 0, 0, 160);
   rect(0, 0, width, height);
 
-  // Winner text — shown in the winner's colour
-  fill(winner === "P1" ? color(0, 200, 180) : color(255, 150, 30));
-  textAlign(CENTER);
-  textSize(56);
-  text(winner + " WINS!", width / 2, height / 2 - 30);
+  
+// Winner text
+textAlign(CENTER);
+textSize(56);
+
+// Change colour based on winner
+if (winner === "P1") {
+  fill(0, 200, 255); // blue
+} else {
+  fill(255, 150, 0); // orange
+}
+
+text(winner + " WINS", width / 2, height / 2 - 20);
+
+
+// glow effect
+for (let i = 3; i > 0; i--) {
+  fill(255, 255, 255, 30);
+  text(winner + " WINS", width / 2 + random(-2,2), height / 2 - 20 + random(-2,2));
+}
+
 
   // Rematch prompt
   fill(255);
@@ -417,6 +517,7 @@ function drawWinScreen() {
 // Draws the ground plane and dividing line.
 // ------------------------------------------------------------
 function drawArena() {
+  image(fightBg, 0, 0, width, height)
   fill(40);
   noStroke();
   rect(0, groundY, width, height - groundY);
