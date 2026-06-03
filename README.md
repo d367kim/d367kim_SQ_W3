@@ -41,16 +41,16 @@ The console will show any errors in your sketch.
 
 ## Assets
 
-| File                                        | Purpose |
-| ------------------------------------------- | ------- |
-| `assets/images/starting.png`                | Portal themed start screen background |
-| `assets/images/fighting.png`                | Portal themed fighting arena background |
-| `assets/images/ending.png`                  | Portal themed ending screen background |
-| `assets/sounds/startmusic.mp3`              | Start screen music |
-| `assets/sounds/yoink.mp3`                   | Ending sound effect |
-| `assets/sounds/punch_1.wav` – `punch_9.wav` | Punch sound effects |
-| `assets/sounds/win.wav`                     | Win sound effect |
-| `assets/sounds/background.mp3`              | Background music during gameplay |
+| File | Source |
+|-------|--------|
+| assets/images/starting.png | Natural History Museum – What Is Space? |
+| assets/images/fighting.png | Genie Scientific – Exploring the Role of Science Laboratories in Modern Schools |
+| assets/images/ending.png | AZoQuantum – Quantum Physics Laboratory Image |
+| assets/sounds/startmusic.mp3 | Pixabay – Intense Music |
+| assets/sounds/yoink.mp3 | Pixabay – Cartoon Yoink 1 |
+| assets/sounds/punch_1.wav – punch_9.wav | OpenGameArt – Punch SFX |
+| assets/sounds/win.wav | OpenGameArt – Win Sound Effect |
+| assets/sounds/background.mp3 | OpenGameArt – Space Dimensions (Techno Version) | |
 
 ## Features Added
 
