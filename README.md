@@ -43,14 +43,14 @@ The console will show any errors in your sketch.
 
 | File | Source |
 |-------|--------|
-| assets/images/starting.png | Natural History Museum – What Is Space? |
-| assets/images/fighting.png | Genie Scientific – Exploring the Role of Science Laboratories in Modern Schools |
-| assets/images/ending.png | AZoQuantum – Quantum Physics Laboratory Image |
-| assets/sounds/startmusic.mp3 | Pixabay – Intense Music |
-| assets/sounds/yoink.mp3 | Pixabay – Cartoon Yoink 1 |
-| assets/sounds/punch_1.wav – punch_9.wav | OpenGameArt – Punch SFX |
-| assets/sounds/win.wav | OpenGameArt – Win Sound Effect |
-| assets/sounds/background.mp3 | OpenGameArt – Space Dimensions (Techno Version) | |
+| assets/images/starting.png | [1] Natural History Museum – What Is Space? |
+| assets/images/fighting.png | [2] Genie Scientific – Exploring the Role of Science Laboratories in Modern Schools |
+| assets/images/ending.png | [3] AZoQuantum – Quantum Physics Laboratory Image |
+| assets/sounds/startmusic.mp3 | [4] Pixabay – Intense Music |
+| assets/sounds/yoink.mp3 | [5] Pixabay – Cartoon Yoink 1 |
+| assets/sounds/punch_1.wav – punch_9.wav | [8] OpenGameArt – Punch SFX |
+| assets/sounds/win.wav | [6] OpenGameArt – Win Sound Effect |
+| assets/sounds/background.mp3 | [7] OpenGameArt – Space Dimensions (Techno Version) | 
 
 ## Features Added
 
@@ -63,18 +63,18 @@ The console will show any errors in your sketch.
 
 ## References
 
-Natural History Museum. n.d. “What Is Space?” Natural History Museum. Retrieved May 27, 2026, from https://www.nhm.ac.uk/discover/what-is-space.html
+[1] Natural History Museum. n.d. “What Is Space?” Natural History Museum. Retrieved May 27, 2026, from https://www.nhm.ac.uk/discover/what-is-space.html
 
-Genie Scientific. n.d. “Exploring the Role of Science Laboratories in Modern Schools.” Genie Scientific. Retrieved May 27, 2026, from https://www.geniescientific.com/exploring-the-role-of-science-laboratories-in-modern-schools/
+[2] Genie Scientific. n.d. “Exploring the Role of Science Laboratories in Modern Schools.” Genie Scientific. Retrieved May 27, 2026, from https://www.geniescientific.com/exploring-the-role-of-science-laboratories-in-modern-schools/
 
-AZoQuantum. n.d. “Quantum Physics Articles.” AZoQuantum. Retrieved May 27, 2026, from https://www.azoquantum.com/Article.aspx?ArticleID=549
+[3] AZoQuantum. n.d. “Quantum Physics Articles.” AZoQuantum. Retrieved May 27, 2026, from https://www.azoquantum.com/Article.aspx?ArticleID=549
 
-Pixabay. n.d. “Intense Music.” Pixabay Music. Retrieved May 27, 2026, from https://pixabay.com/music/search/intense/
+[4] Pixabay. n.d. “Intense Music.” Pixabay Music. Retrieved May 27, 2026, from https://pixabay.com/music/search/intense/
 
-Pixabay. n.d. “Cartoon Yoink 1.” Pixabay Sound Effects. Retrieved May 27, 2026, from https://pixabay.com/sound-effects/search/yoink/
+[5] Pixabay. n.d. “Cartoon Yoink 1.” Pixabay Sound Effects. Retrieved May 27, 2026, from https://pixabay.com/sound-effects/search/yoink/
 
-listener4me. n.d. Win Sound Effect. OpenGameArt.org. Retrieved May 1, 2026, from https://opengameart.org/content/win-sound-effect
+[6] listener4me. n.d. Win Sound Effect. OpenGameArt.org. Retrieved May 1, 2026, from https://opengameart.org/content/win-sound-effect
 
-Pablo, Matthew. n.d. Space Dimensions (Techno Version). OpenGameArt.org. Retrieved May 1, 2026, from https://opengameart.org/content/space-dimensions-techno-version
+[7] Pablo, Matthew. n.d. Space Dimensions (Techno Version). OpenGameArt.org. Retrieved May 1, 2026, from https://opengameart.org/content/space-dimensions-techno-version
 
-Punch SFX. n.d. OpenGameArt.org. Retrieved May 1, 2026, from https://opengameart.org/content/punch-sfx
+[8] Punch SFX. n.d. OpenGameArt.org. Retrieved May 1, 2026, from https://opengameart.org/content/punch-sfx
